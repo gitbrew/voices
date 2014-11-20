@@ -1,0 +1,28 @@
+*************************************************************************
+Voices MP3 Stenography 1.1
+author: David Condrey/Drey Conundrum
+current maintainer: Kyle Barnthouse/durandal
+email: kbarnthouse@hephaestussec.com
+
+Formerly a SOLDIERX Project
+www.soldierx.com
+*************************************************************************
+
+This program uses steganography standards to hide a file within a 
+specified .mp3. And later, be able to retrieve that file in it's 
+entirety. The file may be of any type as long as it is of a relatively 
+smaller size than that of the .mp3 it will be hidden in. While it will 
+work with any file format, this program was designed for the capacity 
+of hiding documents, emails, and other textual data without the use of 
+true encryption. It is important to understand that this program will 
+not actually encrypt the file, it will only hide the file.
+
+For further help on installing the Voices program please reference the 
+INSTALL file.
+
+For further help on using the program please use the "./voices" once 
+installation is complete.
+
+Please email any bugs found to Conundrum@soldierx.com
+
+See LICENSE for terms of use.

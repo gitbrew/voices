@@ -1,0 +1,54 @@
+############################################################################
+## ISO MPEG Audio Subgroup Software Simulation Group (1996)
+## ISO 13818-3 MPEG-2 Audio Decoder - Lower Sampling Frequency Extension
+##
+## $Id: makefile.linux,v 1.2 2002/08/12 21:42:09 Exp $
+##
+## Makefile for voices for Linux platform. Requires GNU make.
+##
+## $Log: makefile.linux,v $
+## Revision 1.2  2002/08/12 21:42:09  
+## 
+##
+## Revision 1.1.1.1  2002/07/25 06:04:36  
+## VOICES: #################################################################
+## This has been modifed from the makefile for the ISO MPEG Audio
+## Subgroup Software Simulation Group mp3 decoder.  It's been
+## changed to compile the "voices" program instead of the "decode" program.
+###########################################################################
+##
+## Revision 1.2  1996/02/14 05:16:17  
+## Cleanups.
+##
+## 
+############################################################################
+
+c_sources = common.c decode.c huffman.c voices.c portableio.c ieeefloat.c
+
+OBJ = $(c_sources:.c=.o)
+CC=gcc
+
+CC_SWITCHES = -g -DUNIX
+PGM = voices 
+
+%.o: %.c makefile.linux
+	$(CC) $(CC_SWITCHES) -c $< -o $@
+
+%.d: %.c
+	$(SHELL) -ec '$(CC) -M $(CC_SWITCHES) $< | sed '\''s/$*.o/& $@/g'\'' > $@'
+
+
+$(PGM):	$(OBJ) makefile.linux
+	gcc -o $(PGM) $(OBJ) -lm -lieee
+	mv $(PGM) ../bin/$(PGM)
+
+
+clean:
+	-rm $(OBJ) $(PGM)
+
+tags: TAGS
+
+TAGS: ${c_sources}
+	etags -T ${c_sources}
+
+-include $(c_sources:.c=.d)
