@@ -49,6 +49,7 @@ LIBS =  -lm
 
 $(PGM):	$(OBJ) Makefile
 	$(CC) -o $(PGM) $(OBJ) $(LIBS)
+	mkdir ../bin
 	mv $(PGM) ../bin/$(PGM)
 
 clean:
